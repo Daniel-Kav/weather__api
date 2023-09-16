@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather App</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="main.js"></script>
 </head>
 <body>
     <h1>Weather App</h1>
-    <div class="search">
-        <input type="text" class="searchBar">
-        <button class="search-btn">Search</button>
-    </div>
-    <div class="weather"></div>
+    <form id="weatherForm">
+        <label for="locationInput">Enter Location:</label>
+        <input type="text" id="locationInput" placeholder="e.g., New York">
+        <button type="submit">Get Weather</button>
+    </form>
+    <div id="weatherInfo"></div>
     <script src="main.js"></script>
 </body>
 </html>

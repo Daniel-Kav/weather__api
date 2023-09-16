@@ -15,7 +15,7 @@ function getWeatherData(location) {
         })
         .catch((err) => {
             console.error('Error', err);
-            throw err; // Rethrow the error so it can be caught elsewhere
+            throw err;
         });
 }
 
@@ -25,7 +25,6 @@ function processWeatherData(data) {
         return null;
     }
 
-    // Extract the relevant data from the API response
     const weatherInfo = {
         location: data.name,
         temperature: data.main.temp,
@@ -37,12 +36,31 @@ function processWeatherData(data) {
     return weatherInfo;
 }
 
-getWeatherData('Stavanger')
-    .then((weatherInfo) => {
-        if (weatherInfo) {
-            console.log('Processed Weather Data:', weatherInfo);
-            // You can use the processed data for your app here
-        } else {
-            console.log('Weather data not available.');
-        }
-    });
+// Handle form submission
+const weatherForm = document.getElementById('weatherForm');
+const weatherInfoDiv = document.getElementById('weatherInfo');
+
+weatherForm.addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent form submission
+
+    const locationInput = document.getElementById('locationInput');
+    const location = locationInput.value;
+
+    if (location) {
+        getWeatherData(location)
+            .then((weatherInfo) => {
+                if (weatherInfo) {
+                    // Display weather information in the div
+                    weatherInfoDiv.textContent = `Location: ${weatherInfo.location}, Temperature: ${weatherInfo.temperature}°C, Description: ${weatherInfo.description}, Humidity: ${weatherInfo.humidity}%, Wind Speed: ${weatherInfo.windSpeed} m/s`;
+                } else {
+                    weatherInfoDiv.textContent = 'Weather data not available.';
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                weatherInfoDiv.textContent = 'An error occurred while fetching weather data.';
+            });
+    } else {
+        weatherInfoDiv.textContent = 'Please enter a location.';
+    }
+});
