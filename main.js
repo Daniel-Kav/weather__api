@@ -11,6 +11,9 @@ function getWeatherData(location){
         return response.json();
       })
       .then((data) =>{
+        return processWeatherData(data);
+      })
+      .then((data) =>{
         console.log('Weather data:',data);
       })
       .catch((err) => {
@@ -18,4 +21,30 @@ function getWeatherData(location){
       });
 }
 
-getWeatherData('Nairobi');
+// Function to process the weather data and return an object with required information
+function processWeatherData(data) {
+    if (!data) {
+        return null;
+    }
+
+    // Extract the relevant data from the API response
+    const weatherInfo = {
+        location: data.name,
+        temperature: data.main.temp,
+        description: data.weather[0].description,
+        humidity: data.main.humidity,
+        windSpeed: data.wind.speed,
+    };
+
+    return weatherInfo;
+}
+
+getWeatherData('New York')
+    .then((weatherInfo) => {
+        if (weatherInfo) {
+            console.log('Processed Weather Data:', weatherInfo);
+            // You can use the processed data for your app here
+        } else {
+            console.log('Weather data not available.');
+        }
+    });
