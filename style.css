@@ -1,4 +1,7 @@
 
+body {
+    background-image: url(./images/night.jpg);
+}
 
 .nav{
     display: grid;
@@ -22,8 +25,22 @@
     width: 350px;
     border-radius:8px;
 }
-.weatherInfo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#weatherForm label {
+    color: #fff;
+    padding: 15px;
+    font-size: 20px;
+}
+#weatherInfo p{
+   margin-bottom: 20px;
+}
+#weatherInfo {
+    display: grid; 
+    grid-column: 1fr;
+    margin-left: 20px;
+    border-left: 2px solid #1a1919;
+    padding: 10px;
+    font-family: arial, sans-serif;
+    font-size: 16px;
+    gap: 12px;
+    place-items: center;
 }

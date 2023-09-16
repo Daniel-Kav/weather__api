@@ -51,7 +51,13 @@ weatherForm.addEventListener('submit', function (e) {
             .then((weatherInfo) => {
                 if (weatherInfo) {
                     // Display weather information in the div
-                    weatherInfoDiv.textContent = `Location: ${weatherInfo.location}, Temperature: ${weatherInfo.temperature}°C, Description: ${weatherInfo.description}, Humidity: ${weatherInfo.humidity}%, Wind Speed: ${weatherInfo.windSpeed} m/s`;
+                    weatherInfoDiv.innerHTML = `
+                    <div>Location: ${weatherInfo.location}</div>
+                    <div>Temperature: ${weatherInfo.temperature}°C</div>
+                    <div>Description: ${weatherInfo.description}</div>
+                    <div>Humidity: ${weatherInfo.humidity}%</div>
+                    <div>Wind Speed: ${weatherInfo.windSpeed} m/s</div>
+                `;
                 } else {
                     weatherInfoDiv.textContent = 'Weather data not available.';
                 }
