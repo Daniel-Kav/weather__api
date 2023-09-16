@@ -1,0 +1,14 @@
+
+
+.nav{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: rgb(45, 45, 105);
+}
+
+
+.weatherInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
