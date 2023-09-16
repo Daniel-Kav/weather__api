@@ -4,7 +4,7 @@ function getWeatherData(location){
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`;
 
     fetch(apiUrl, {mode:"cors",})
-      .then((response){
+      .then((response) =>{
         if(!response.ok){
             throw new Error('Network response failed');
         }
